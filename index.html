@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Ficha Catalográfica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dados de trabalho</h1>
+        
+        <form id="fichaForm">
+            <!-- Seção 1: Dados Básicos -->
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="titulo">Título do trabalho:</label>
+                    <input type="text" id="titulo" placeholder="Ex.: Redes sociais em bibliotecas universitárias" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subtitulo">Subtítulo do trabalho:</label>
+                    <input type="text" id="subtitulo" placeholder="Ex.: estudo exploratório">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="orientador">Nome do orientador(a):</label>
+                        <input type="text" id="orientador" placeholder="Ex.: José da Silva" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="titulacaoOrientador">Titulação do orientador(a):</label>
+                        <select id="titulacaoOrientador" required>
+                            <option value="">--- Selecione ---</option>
+                            <option value="Dr.">Dr.</option>
+                            <option value="Me.">Me.</option>
+                            <option value="Esp.">Esp.</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Coorientador (aparece só quando necessário) -->
+                <div class="form-row" id="coorientadorGroup" style="display: none;">
+                    <div class="form-group">
+                        <label for="coorientador">Nome do orientador(a):</label>
+                        <input type="text" id="coorientador" placeholder="Opcional">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="titulacaoCoorientador">Titulação do orientador(a):</label>
+                        <select id="titulacaoCoorientador">
+                            <option value="">--- Selecione ---</option>
+                            <option value="Dr.">Dr.</option>
+                            <option value="Me.">Me.</option>
+                            <option value="Esp.">Esp.</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="button" id="btnAddCoorientador">+ Adicionar orientador(a)</button>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ano">Ano de publicação:</label>
+                        <select id="ano" required>
+                            <option value="">--- Selecione ---</option>
+                            <!-- Opções de 2010-2030 -->
+                            <script>
+                                for (let i = 2050; i >= 1900; i--) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="folhas">Número de Folhas:</label>
+                        <input type="number" id="folhas" placeholder="Ex.: 70" min="1">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ilustracao">Ilustração:</label>
+                        <select id="ilustracao">
+                            <option value="">--- Selecione ---</option>
+                            <option value="il.">il.</option>
+                            <option value="il., color.">il., color.</option>
+                            <option value="Não contém">Não contém</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="unidade">Unidade Acadêmica:</label>
+                        <select id="unidade" required>
+                            <option value="">--- Selecione sua Unidade Acadêmica ---</option>
+                            <option value="Faculdade de Letras">Faculdade de Letras</option>
+                            <option value="Instituto de Ciências Exatas">Instituto de Ciências Exatas</option>
+                            <option value="Faculdade de Direito">Faculdade de Direito</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de Trabalho:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="tipoTrabalho" value="Tese" required> Tese</label>
+                        <label><input type="radio" name="tipoTrabalho" value="Dissertação"> Dissertação</label>
+                        <label><input type="radio" name="tipoTrabalho" value="TCC (Especialização)"> TCC (Especialização)</label>
+                        <label><input type="radio" name="tipoTrabalho" value="TCC (Graduação)"> TCC (Graduação)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção 2: Palavras-chave -->
+            <div class="form-section">
+                <h2>Palavras-chave</h2>
+                
+                <div id="palavrasChaveContainer">
+                    <div class="keyword-row">
+                        <input type="text" class="keyword-input" placeholder="Ex.: Bibliotecas Universitárias">
+                        <span class="keyword-number">1ª</span>
+                    </div>
+                    <!-- Mais campos serão adicionados via JS -->
+                </div>
+                
+                <button type="button" id="btnAddKeyword">+ Adicionar Palavra-chave</button>
+                
+                <div class="form-group">
+                    <label for="fonte">Fonte:</label>
+                    <select id="fonte">
+                        <option value="">--- Selecione ---</option>
+                        <option value="Autor">Autor</option>
+                        <option value="Cutter">Cutter</option>
+                        <option value="Outra">Outra</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="generate-btn">Gerar Ficha Catalográfica</button>
+        </form>
+        
+        <!-- Resultado -->
+        <div class="ficha-result" id="fichaResult">
+            <h2>Ficha Catalográfica Gerada</h2>
+            <div id="fichaContent"></div>
+            <button id="btnCopy" class="copy-btn">Copiar Ficha</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

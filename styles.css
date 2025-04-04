@@ -1,0 +1,150 @@
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #eaecef;
+    padding-bottom: 10px;
+}
+
+/* Formulário */
+.form-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Palavras-chave */
+.keyword-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.keyword-input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.keyword-number {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+/* Botões */
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.generate-btn {
+    background: #27ae60;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.generate-btn:hover {
+    background: #219653;
+}
+
+.copy-btn {
+    background: #9b59b6;
+    margin-top: 15px;
+}
+
+.copy-btn:hover {
+    background: #8e44ad;
+}
+
+/* Resultado */
+.ficha-result {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    display: none;
+}
+
+#fichaContent {
+    white-space: pre-line;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Times New Roman', Times, serif;
+}
